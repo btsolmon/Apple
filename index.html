@@ -31,7 +31,7 @@
       <div class="nav">
         <img src="search-icon.svg" alt="" />
         <img src="shop-icon.svg" alt="" />
-        <img class="menu-icon" src="menu-icon.svg" alt="" />
+        <img class="menu-icon" src="menu-icon.svg" alt="Menu" />
       </div>
     </div>
     <div class="commercial">
@@ -204,5 +204,14 @@
         <div id="gallery9" class="gallery gallery-9"></div>
       </div>
     </div>
+    <script>
+      const menuIcon = document.querySelector(".menu-icon");
+      const navItems = document.querySelector(".nav-items");
+      if (menuIcon && navItems) {
+        menuIcon.addEventListener("click", function () {
+          navItems.classList.toggle("open");
+        });
+      }
+    </script>
   </body>
 </html>

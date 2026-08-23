@@ -1,3 +1,13 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 body {
   margin: 0;
   font-family: Inter;
@@ -26,10 +36,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 4px;
   background-color: #fff;
-  padding: 20px 0;
+  padding: 20px 16px;
   font-size: 14px;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 .background {
   width: 100%;
@@ -87,19 +102,26 @@ body {
 }
 .frame2 {
   display: flex;
-  padding: 0 140px;
+  padding: 0 clamp(16px, 7.3vw, 140px);
   margin: 80px 0;
   justify-content: space-between;
   align-items: flex-start;
   align-self: stretch;
+  flex-wrap: wrap;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 .left {
-  font-size: 44px;
+  font-size: clamp(28px, 3.2vw, 44px);
   font-weight: 700;
-  line-height: 52px;
+  line-height: 1.2;
   display: flex;
   align-items: center;
-  gap: 32px;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  min-width: 0;
 }
 .leftstore {
   background: linear-gradient(90deg, #0090f7 0%, #ba62fc 50%, #f2416b 100%);
@@ -148,34 +170,44 @@ body {
   align-self: stretch;
 }
 .frame3 {
-  width: fit-content;
-  display: flex;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
   margin-bottom: 72px;
-  padding-left: 140px;
-  padding-right: 140px;
-  align-items: center;
-  gap: 12px;
+  padding-left: clamp(16px, 7.3vw, 140px);
+  padding-right: clamp(16px, 7.3vw, 140px);
+  align-items: start;
+  gap: 20px clamp(4px, 0.6vw, 12px);
   font-size: 14px;
   font-weight: 700;
   line-height: 20px;
-  align-self: stretch;
-}
-.items {
-  width: 120px;
-  height: 78px;
 }
 .items-container {
-  .items {
-    display: flex;
-    width: 120px;
-    padding: 16px 8px;
-    flex-direction: column;
-  }
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.items {
+  display: block;
+  width: 100%;
+  max-width: 120px;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 400 / 260;
+  object-fit: contain;
 }
 .f1p {
   text-align: center;
-  font-size: 14px;
-  margin: 0;
+  font-size: clamp(10px, 0.85vw, 14px);
+  line-height: 1.25;
+  margin: 8px 0 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 .section2.frame1 {
   padding: 0 140px;
@@ -878,4 +910,213 @@ body {
   gap: 8px;
   border-radius: 999px;
   border: 1px solid black;
+}
+
+@media (max-width: 1024px) {
+  .section2.frame1,
+  .section2.frame2,
+  .section2.frame4,
+  .section2.frame5,
+  .section2.frame6,
+  .section2.frame7 {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    justify-content: space-between;
+    padding: 0 16px;
+    width: 100%;
+    position: relative;
+  }
+  .nav > .nav {
+    width: auto;
+    padding: 0;
+    gap: 16px;
+    justify-content: flex-end;
+  }
+  .nav-items {
+    display: none;
+    position: absolute;
+    top: 44px;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    flex-direction: column;
+    gap: 0;
+    background: #f5f5f7;
+    padding: 8px 0 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+  .nav-items.open {
+    display: flex;
+  }
+  .nav-items p {
+    margin: 0;
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+  .header {
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 12px 16px;
+  }
+  .frame2 {
+    flex-direction: column;
+    margin: 36px 0 28px;
+    padding: 0 16px;
+    gap: 20px;
+  }
+  .left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 32px;
+    line-height: 1.15;
+  }
+  .right {
+    margin-top: 0;
+  }
+  .frame3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0 16px;
+    margin-bottom: 48px;
+    gap: 16px 8px;
+  }
+  .f1p {
+    font-size: 12px;
+  }
+  .section2.frame1,
+  .section2.frame2,
+  .section2.frame4,
+  .section2.frame5,
+  .section2.frame6,
+  .section2.frame7 {
+    padding: 0 16px;
+    margin-bottom: 40px;
+  }
+  .title1,
+  .title2 {
+    height: auto;
+    min-height: 0;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    font-size: 21px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+  .title2 {
+    margin-top: 0;
+  }
+  .boxcontainer1,
+  .boxcontainer2,
+  .boxcontainer4,
+  .boxcontainer5,
+  .boxcontainer6 {
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -16px;
+    padding: 0 16px 8px;
+  }
+  .box1,
+  .box2,
+  .box3,
+  .box4,
+  .box2-1,
+  .box3-1,
+  .box4-1,
+  .box4-3,
+  .box4-4,
+  .box5-1,
+  .box5-2,
+  .box5-3,
+  .box5-4,
+  .box6-1,
+  .box6-2,
+  .box6-3,
+  .box6-4,
+  .box6-5 {
+    width: min(320px, calc(100vw - 48px));
+    min-width: min(320px, calc(100vw - 48px));
+    height: 420px;
+    margin-top: 0;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  .box2-2 {
+    width: min(280px, calc(100vw - 72px));
+    min-width: min(280px, calc(100vw - 72px));
+    height: 420px;
+    padding: 40px 20px 24px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  .box2img img {
+    width: 180px;
+    height: 180px;
+  }
+  .box4-2 {
+    width: min(320px, calc(100vw - 48px));
+    min-width: min(320px, calc(100vw - 48px));
+    height: 420px;
+    gap: 12px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+  .box4-2-1 {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    flex: 1;
+  }
+  .box1text,
+  .box2text {
+    width: auto;
+    max-width: calc(100% - 24px);
+    height: auto;
+    margin-left: 20px;
+  }
+  .box2text {
+    margin-top: 48px;
+  }
+  .text2,
+  .text2-1,
+  .text2-1bottom,
+  .text4-1,
+  .text4-2,
+  .text4-3,
+  .text5-1,
+  .text5-3,
+  .text5-4,
+  .text5-5,
+  .text6-1,
+  .text6-2 {
+    width: auto;
+    max-width: calc(100% - 40px);
+    font-size: 22px;
+  }
+  .text3,
+  .text5-2 {
+    width: auto;
+    max-width: calc(100% - 40px);
+    font-size: 15px;
+  }
+  .colors {
+    width: 100%;
+    max-width: 100%;
+  }
+  .links {
+    flex-wrap: wrap;
+  }
+  .link1 {
+    height: auto;
+  }
 }
